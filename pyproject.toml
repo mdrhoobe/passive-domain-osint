@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [{name = "Mohammed Ridha Mansour Salih"}]
-dependencies = ["requests>=2.31,<3", "dnspython>=2.4,<3", "streamlit>=1.32,<2"]
+dependencies = ["requests>=2.31,<3", "dnspython>=2.4,<3", "streamlit>=1.67,<2"]
 
 [project.scripts]
 passive-osint = "cli:main"
