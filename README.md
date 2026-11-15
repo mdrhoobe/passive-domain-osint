@@ -6,6 +6,12 @@ This project demonstrates input validation, public-source discovery, independent
 
 **Status:** v0.2.0 — implemented CLI, RDAP/DNS/CT collectors, exports, Streamlit UI, synthetic offline demo, and automated tests. **Live end-to-end API reliability is not guaranteed**: networks and public services can change or rate-limit requests.
 
+### Actual Streamlit interface (synthetic demo)
+
+![Screenshot from the running Streamlit app with labeled synthetic sample data](docs/images/streamlit-demo.png)
+
+*The screenshot is captured from a real browser session by the UI smoke-test workflow. The values shown are synthetic examples, **not real-world domain findings**. If the screenshot has not yet been generated, check the workflow [artifacts](https://github.com/mdrhoobe/passive-domain-osint/actions).*
+
 ## Features
 
 | Feature | Implementation | Key limitation |
@@ -23,7 +29,8 @@ This project demonstrates input validation, public-source discovery, independent
 Requirements: Python 3.11+; internet access for dependency installation and *live* collection.
 
 ```powershell
-cd "$HOME\Documents\Scholarship-Projects\passive-domain-osint"
+git clone https://github.com/mdrhoobe/passive-domain-osint.git
+cd passive-domain-osint
 py -3.11 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
@@ -106,7 +113,7 @@ python cli.py --help
 
 Tests use deterministic JSON fixtures and an autouse fixture that blocks raw socket connections. They substitute fake HTTP sessions and DNS resolvers; **no real network requests are needed or allowed during tests**. Test scenarios cover bad URL input, source errors, malformed JSON, HTTP redirects, oversized responses, DNS timeouts, missing results, confidentiality, exporting and offline CLI use.
 
-**Verified in the preparation environment:** 60 tests passed and 92% combined coverage for CLI/core code under Python 3.13. See `docs/REVIEW-AR.md` for details and limitations. This is *not* a live service integration benchmark and does not measure Streamlit layout across browsers.
+**Verified offline:** 60 unit tests passed locally, and the initial GitHub Actions workflow passed on Python 3.11, 3.12 and 3.13. Run `python scripts/live_smoke.py` for a best-effort live-source verification of `example.com` and JSON/CSV round-trips. Run the `visual-and-live-smoke` workflow for an actual Streamlit browser screenshot and synthetic export-download checks. This is not a claim of uninterrupted service availability: check the workflow logs for each provider's status.
 
 ## Known limitations / research questions
 
@@ -117,23 +124,11 @@ Tests use deterministic JSON fixtures and an autouse fixture that blocks raw soc
 - This application does not support batch domains, user account mapping, email enumeration, subdomain crawling or active target probes.
 - Public TXT records can expose service-configuration strings. Review exports before sharing publicly.
 - There is no live-data database or scheduled monitoring. A collected report stays in the current Streamlit session only; JSON/CSV are created on demand.
-- No cross-platform browser screenshot or live-source success benchmark is claimed.
+- Public provider availability varies and is reported separately in the live smoke-check logs.
 
 ## Responsible use
 
 Only query domains you have permission or a legitimate, lawful reason to investigate, observe public data provider terms and rate limits, and do not publish accidental personal information. Read [SECURITY.md](SECURITY.md). This tool makes HTTPS requests to **public metadata providers**, not HTTP probes against the target host.
-
-## Suggested Conventional Commits
-
-Use commit subjects only after you have reviewed the corresponding code changes. An honest single commit for the current reviewed snapshot is acceptable; do not manufacture historical commits.
-
-```text
-fix: replace broken RDAP and CT placeholders with public-source collectors
-feat: add deterministic domain validator and structured exports
-feat(ui): add Streamlit dashboard and clearly labeled offline demo
-test: add isolated fixtures and offline regression tests
-docs: document methodology, limitations and reproducible setup
-```
 
 ## License
 
