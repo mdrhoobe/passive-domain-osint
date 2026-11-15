@@ -11,7 +11,7 @@ from src.output import export_json, export_csv
 
 st.set_page_config(
     page_title="Passive Domain OSINT",
-    page_icon="??",
+    page_icon="🌐",
     layout="wide",
 )
 
@@ -63,7 +63,7 @@ st.markdown("""
 
 with st.sidebar:
     st.markdown("### Research workspace")
-    st.caption("Passive Domain Intelligence ? v0.2")
+    st.caption("Passive Domain Intelligence · v0.2")
     st.divider()
     st.markdown("**Available sources**")
     st.write("RDAP | DNS | Certificate Transparency")
@@ -199,7 +199,7 @@ elif result:
                     records = item["data"].get("records", {})
                     for kind, values in records.items():
                         with st.expander(
-                            f"{kind} ? {len(values)} records",
+                            f"{kind} — {len(values)} records",
                             expanded=kind in {"A", "MX"},
                         ):
                             if values:
@@ -261,7 +261,7 @@ elif result:
                                 if isinstance(event, dict):
                                     action = event.get("action", "Unknown")
                                     date = event.get("date", "N/A")
-                                    st.write(f"? {action} ? {date}")
+                                    st.write(f"- {action}: {date}")
                         else:
                             st.caption("No registration events returned.")
 
