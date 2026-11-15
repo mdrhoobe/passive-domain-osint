@@ -1,0 +1,12 @@
+{
+  "objectClassName": "domain",
+  "ldhName": "EXAMPLE.COM",
+  "handle": "EXAMPLE-DOMAIN-HANDLE",
+  "status": ["active"],
+  "events": [
+    {"eventAction": "registration", "eventDate": "2000-01-01T00:00:00Z"},
+    {"eventAction": "expiration", "eventDate": "2030-01-01T00:00:00Z"}
+  ],
+  "nameservers": [{"ldhName":"NS1.EXAMPLE.TEST"}],
+  "entities": [{"roles":["registrar"], "handle":"PUBLIC-REGISTRAR-ID", "vcardArray":["vcard",[["email",{},"text","private@example.test"]]]}]
+}

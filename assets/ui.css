@@ -1,0 +1,165 @@
+:root {
+  --coral: #FF7C66;
+  --coral-medium: #FF8C76;
+  --peach: #FFA894;
+  --teal: #00AEA1;
+  --blue: #00A9ED;
+  --sky: #00BEFF;
+  --page: #F7F9FB;
+  --surface: #FFFFFF;
+  --text: #1F2937;
+  --muted: #526477;
+  --border: #DEE5EC;
+  color-scheme: light;
+}
+
+[data-testid="stAppViewContainer"] {
+  background: var(--page);
+  color: var(--text);
+  font-family: "Segoe UI Variable", "Segoe UI",
+               system-ui, sans-serif;
+}
+
+[data-testid="stAppViewContainer"] .block-container {
+  max-width: 1180px;
+  padding-top: 1.4rem;
+  padding-bottom: 4rem;
+}
+
+[data-testid="stSidebar"] {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.product-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+}
+
+.brand-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #DDF7F3;
+  color: #006B63;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-copy strong {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.brand-copy span,
+.brand-version {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+.brand-version {
+  margin-left: auto;
+}
+
+.palette-line {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 4px;
+  margin-bottom: 34px;
+}
+
+.palette-line span:nth-child(1) { background: var(--teal); }
+.palette-line span:nth-child(2) { background: var(--blue); }
+.palette-line span:nth-child(3) { background: var(--sky); }
+.palette-line span:nth-child(4) { background: var(--coral); }
+.palette-line span:nth-child(5) { background: var(--coral-medium); }
+.palette-line span:nth-child(6) { background: var(--peach); }
+
+.workspace-intro {
+  margin-bottom: 30px;
+}
+
+.workspace-intro .eyebrow {
+  color: #00756D;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.workspace-intro h1 {
+  color: var(--text);
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 680;
+  letter-spacing: -0.04em;
+  margin: 9px 0;
+}
+
+.workspace-intro p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+[data-testid="stForm"] {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 26px;
+}
+
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input {
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  min-height: 42px;
+}
+
+[data-testid="stFormSubmitButton"] button {
+  background: var(--teal);
+  border: 1px solid var(--teal);
+  color: #073D38;
+  border-radius: 8px;
+  font-weight: 700;
+  min-height: 44px;
+}
+
+[data-testid="stFormSubmitButton"] button:hover {
+  background: #00C2B3;
+  border-color: #00C2B3;
+  color: #073D38;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #00756D;
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  [data-testid="stAppViewContainer"] .block-container {
+    padding: 1rem;
+  }
+  .product-header { padding: 12px; }
+  .brand-version { display: none; }
+  .workspace-intro { margin-bottom: 20px; }
+  [data-testid="stForm"] { padding: 12px; }
+}

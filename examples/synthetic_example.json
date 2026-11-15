@@ -1,0 +1,28 @@
+{
+  "domain": "example.com",
+  "collected_at": "SYNTHETIC EXAMPLE — NOT A LIVE QUERY",
+  "demo": true,
+  "rdap": {
+    "source": "SYNTHETIC FIXTURE (IANA bootstrap / RDAP format)",
+    "status": "ok",
+    "data": {"name": "EXAMPLE.COM", "handle": "DEMO-HANDLE", "status": ["active"], "events": [{"action":"registration","date":"2000-01-01T00:00:00Z"}], "nameservers": ["ns1.example.test"], "registrar_handles": ["DEMO-REGISTRAR"]},
+    "error": null,
+    "note": "Illustrative fields only; deliberately not live data."
+  },
+  "dns": {
+    "source": "SYNTHETIC FIXTURE (DNS records)",
+    "status": "ok",
+    "data": {"records": {"A": ["192.0.2.10"], "AAAA": [], "MX": ["10 mail.example.test"], "NS": [], "TXT": ["v=spf1 -all"]}},
+    "error": null,
+    "note": "192.0.2.0/24 is a documentation network; not a real host."
+  },
+  "cert": {
+    "source": "SYNTHETIC FIXTURE (Certificate Transparency)",
+    "status": "ok",
+    "data": {"matched_entries":1, "display_limit":40, "entries":[{"id":123,"names":["example.com"], "issuer_name":"Demo CA", "entry_timestamp":"2025-01-01", "not_before":"2025-01-01", "not_after":"2025-04-01"}]},
+    "error": null,
+    "note": "Illustrative synthetic certificate entry; not evidence of issuance."
+  },
+  "summary": {"ok":3,"partial":0,"no_data":0,"error":0},
+  "disclaimer": "Synthetic demonstration only. NOT a live observation or research result."
+}

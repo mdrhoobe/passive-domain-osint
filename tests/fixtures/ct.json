@@ -1,0 +1,6 @@
+[
+ {"id":123,"name_value":"example.com\n*.example.com", "issuer_name":"Demo CA", "entry_timestamp":"2025-01-01", "not_before":"2025-01-01", "not_after":"2025-04-01"},
+ {"id":123,"name_value":"example.com", "issuer_name":"Demo CA", "entry_timestamp":"2025-01-01"},
+ {"id":124,"name_value":"admin.example.com", "issuer_name":"Demo CA", "entry_timestamp":"2025-02-01"},
+ {"id":125,"name_value":"EXAMPLE.COM", "issuer_name":"Demo CA2", "entry_timestamp":"2025-03-01"}
+]

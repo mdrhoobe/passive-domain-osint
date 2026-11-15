@@ -1,0 +1,1 @@
+{"version":"1.0","services":[[["net","com"],["https://rdap.example.test/"]],[["example.com"],["http://insecure.example/","https://rdap.example.test/"]]]}

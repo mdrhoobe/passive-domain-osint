@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "passive-domain-osint"
+version = "0.2.0"
+description = "Single-domain public metadata research through RDAP, DNS and CT"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Mohammed Ridha Mansour Salih"}]
+dependencies = ["requests>=2.31,<3", "dnspython>=2.4,<3", "streamlit>=1.32,<2"]
+
+[project.scripts]
+passive-osint = "cli:main"
+
+[tool.setuptools]
+py-modules = ["cli"]
+
+[tool.setuptools.packages.find]
+include = ["src", "src.*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

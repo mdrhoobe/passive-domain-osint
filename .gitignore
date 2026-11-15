@@ -1,0 +1,59 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.vscode/
+.idea/
+# Avoid pushing collected results or local data
+results/
+exports/
+.local/
+.streamlit/secrets.toml
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local backups and temporary files
+*.bak
+*.bak.*
+*.backup-*
+*.broken-*
+app.before-*.py
+app.pre-*.py
+app.stable.backup.py
+ui.before-*.css
+ui.pre-*.css
+*.tmp
+*.log
+
+# Editor and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
