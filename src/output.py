@@ -37,7 +37,3 @@ def export_csv(results: dict) -> str:
                              _safe_cell(json.dumps(value, ensure_ascii=False)), item.get("note") or ""])
     return out.getvalue()
 
-
-class OutputExporter:
-    export_json = staticmethod(export_json)
-    export_csv = staticmethod(export_csv)
