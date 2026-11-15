@@ -1,0 +1,65 @@
+name: visual-and-live-smoke
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app.py'
+      - 'assets/ui.css'
+      - 'scripts/**'
+      - '.github/workflows/visual-and-live-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Real public-provider requests and export round-trips
+        run: python scripts/live_smoke.py
+
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install application and headless Chromium
+        run: |
+          python -m pip install -r requirements.txt playwright
+          python -m playwright install --with-deps chromium
+      - name: Start actual Streamlit server
+        run: |
+          nohup python -m streamlit run app.py --server.headless=true --server.port=8501 --browser.gatherUsageStats=false > /tmp/streamlit.log 2>&1 &
+          for i in {1..40}; do
+            if curl --silent --fail http://127.0.0.1:8501/_stcore/health; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/streamlit.log
+          exit 1
+      - name: Take screenshot and verify browser JSON/CSV downloads
+        run: python scripts/ui_smoke.py
+      - name: Save screenshot as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: real-streamlit-synthetic-demo
+          path: docs/images/streamlit-demo.png
+      - name: Commit actual screenshot to the README image path
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/images/streamlit-demo.png
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: add actual Streamlit demo screenshot [skip ci]"
+            git push origin HEAD:main
+          fi
